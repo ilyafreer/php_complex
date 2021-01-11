@@ -1,1 +1,16 @@
-Запуск тестов из контейнера complex_app командой php vendor/bin/codecept run unit ComplexTest
+## php_complex
+### Классы для работы с комплексными числами
+
+Загрузка зависимостей для codeception и запуск тестов из контейнера **complex_app**
+
+```
+docker-compose up -d
+docker exec -it complex_app bash
+composer update
+php vendor/bin/codecept run unit ComplexTest
+```
+Просмотр в браузере по адресу localhost:8080
+
+![Пример вывода в браузере](https://github.com/ilyafreer/php_complex/blob/master/result.png?raw=true)
+
+![Пример работы тестов](https://github.com/ilyafreer/php_complex/blob/master/tests.png?raw=true)
