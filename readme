@@ -1,0 +1,1 @@
+Запуск тестов из контейнера complex_app командой php vendor/bin/codecept run unit ComplexTest
