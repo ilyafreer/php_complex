@@ -24,9 +24,13 @@ $results['multiply'] = '(' . $complexOne->toString() . ')*(' . $complexTwo->toSt
         $complexTwo
     )->toString();
 
-$results['divide'] = '(' . $complexOne->toString() . ')/(' . $complexTwo->toString() . ')=' . ComplexMath::divide(
-        $complexOne,
-        $complexTwo
-    )->toString();
+try {
+    $results['divide'] = '(' . $complexOne->toString() . ')/(' . $complexTwo->toString() . ')=' . ComplexMath::divide(
+            $complexOne,
+            $complexTwo
+        )->toString();
+}catch (Exception $exception){
+    echo $exception->getMessage();
+}
 
 var_dump($results);

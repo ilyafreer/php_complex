@@ -63,6 +63,9 @@ class ComplexMath
         $numeratorReal = $a->getReal() * $b->getReal() + $a->getImaginaryMagnitude() * $b->getImaginaryMagnitude();
         $numeratorImaginary = $b->getReal() * $a->getImaginaryMagnitude() - $a->getReal() * $b->getImaginaryMagnitude();
         $denominator = pow($b->getReal(), 2) + pow($b->getImaginaryMagnitude(), 2);
+        if(empty($denominator)){
+            throw new \Exception('Операция divede в знаменателе получила 0. Деление невозможно');
+        }
         return new Complex(round($numeratorReal / $denominator, 2), round($numeratorImaginary / $denominator,2));
     }
 }
