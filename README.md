@@ -11,5 +11,5 @@ php vendor/bin/codecept run unit ComplexTest
 ```
 Просмотр в браузере по адресу localhost:8080
 
-![alt text](screens/result.png "Пример вывода в браузере")
-![alt text](screens/tests.png "Пример работы тестов")
+![Пример вывода в браузере](/app/screens/result.png)
+![Пример работы тестов](/app/screens/tests.png)
