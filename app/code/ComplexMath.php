@@ -16,9 +16,10 @@ class ComplexMath
      * @param Complex $b Второе число
      * @return Complex
      */
-    public static function sum(Complex $a, Complex $b): Complex
+    public static function sum(Complex $a, Complex $b):Complex
     {
-        return new Complex(
+        $class = get_class($a);
+        return new $class(
             $a->getReal() + $b->getReal(),
             $a->getImaginaryMagnitude() + $b->getImaginaryMagnitude()
         );
@@ -32,7 +33,8 @@ class ComplexMath
      */
     public static function subtract(Complex $a, Complex $b): Complex
     {
-        return new Complex(
+        $class = get_class($a);
+        return new $class(
             $a->getReal() - $b->getReal(),
             $a->getImaginaryMagnitude() - $b->getImaginaryMagnitude()
         );
@@ -49,7 +51,8 @@ class ComplexMath
         $newReal = $a->getReal() * $b->getReal() - $a->getImaginaryMagnitude() * $b->getImaginaryMagnitude();
         $newImaginary = $a->getReal() * $b->getImaginaryMagnitude() + $b->getReal() * $a->getImaginaryMagnitude();
 
-        return new Complex(round($newReal, 2), round($newImaginary, 2));
+        $class = get_class($a);
+        return new $class(round($newReal, 2), round($newImaginary, 2));
     }
 
     /**
@@ -66,6 +69,7 @@ class ComplexMath
         if(empty($denominator)){
             throw new \Exception('Операция divede в знаменателе получила 0. Деление невозможно');
         }
-        return new Complex(round($numeratorReal / $denominator, 2), round($numeratorImaginary / $denominator,2));
+        $class = get_class($a);
+        return new $class(round($numeratorReal / $denominator, 2), round($numeratorImaginary / $denominator,2));
     }
 }

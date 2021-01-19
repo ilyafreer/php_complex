@@ -8,19 +8,19 @@ namespace code;
  * Class Complex
  * @package code
  */
-class Complex
+abstract class Complex
 {
     /**
      * Действительная часть числа
      * @var float $real
      */
-    private $real;
+    protected $real;
 
     /**
      * Мнимая часть числа
      * @var float $imaginaryMagnitude
      */
-    private $imaginaryMagnitude;
+    protected $imaginaryMagnitude;
 
     public function __construct(float $re, float $im)
     {
@@ -47,13 +47,8 @@ class Complex
     }
 
     /**
-     * Возвращает стороковое представление
+     * Возвращает представление числа в строковом формате
      * @return string
      */
-    public function toString(): string
-    {
-        $symbol = ($this->imaginaryMagnitude > 0) ? '+' : '';
-        $imaginary = ($this->imaginaryMagnitude != 1.0) ? $this->imaginaryMagnitude : '';
-        return $this->real . $symbol . $imaginary . 'i';
-    }
+    abstract public function toString():string;
 }
