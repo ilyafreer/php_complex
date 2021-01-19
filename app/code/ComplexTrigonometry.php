@@ -7,7 +7,7 @@ namespace code;
 class ComplexTrigonometry extends Complex
 {
     /**
-     * Представления комплексного числа в тригонометрической формуле
+     * Представления комплексного числа в тригонометрической форме
      * z = ρ(cosφ+isinφ)
      * ρ = sqrt(a^2+b^2)
      * φ = argtg(b/a)

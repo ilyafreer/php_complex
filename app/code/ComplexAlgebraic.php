@@ -7,7 +7,7 @@ namespace code;
 class ComplexAlgebraic extends Complex
 {
     /**
-     * Возвращает стороковое представление
+     * Представления комплексного числа в алгебраической форме
      * @return string
      */
     public function toString(): string

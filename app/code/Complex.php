@@ -47,7 +47,7 @@ abstract class Complex
     }
 
     /**
-     * Возвращает представление числа в строковом формате
+     * Возвращает представление числа в виде строки
      * @return string
      */
     abstract public function toString():string;
