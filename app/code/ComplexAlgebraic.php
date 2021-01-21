@@ -4,7 +4,7 @@
 namespace code;
 
 
-class ComplexAlgebraic extends Complex
+class ComplexAlgebraic extends Complex implements iComplex
 {
     /**
      * Представления комплексного числа в алгебраической форме
@@ -12,8 +12,8 @@ class ComplexAlgebraic extends Complex
      */
     public function toString(): string
     {
-        $symbol = ($this->imaginaryMagnitude > 0) ? '+' : '';
-        $imaginary = ($this->imaginaryMagnitude != 1.0) ? $this->imaginaryMagnitude : '';
-        return $this->real . $symbol . $imaginary . 'i';
+        $symbol = ($this->getImaginaryMagnitude() > 0) ? '+' : '';
+        $imaginary = ($this->getImaginaryMagnitude() != 1.0) ? $this->getImaginaryMagnitude() : '';
+        return $this->getReal() . $symbol . $imaginary . 'i';
     }
 }

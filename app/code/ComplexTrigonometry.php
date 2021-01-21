@@ -4,7 +4,7 @@
 namespace code;
 
 
-class ComplexTrigonometry extends Complex
+class ComplexTrigonometry extends Complex implements iComplex
 {
     /**
      * Представления комплексного числа в тригонометрической форме

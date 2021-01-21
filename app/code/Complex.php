@@ -14,13 +14,13 @@ abstract class Complex
      * Действительная часть числа
      * @var float $real
      */
-    protected $real;
+    private $real;
 
     /**
      * Мнимая часть числа
      * @var float $imaginaryMagnitude
      */
-    protected $imaginaryMagnitude;
+    private $imaginaryMagnitude;
 
     public function __construct(float $re, float $im)
     {
@@ -45,10 +45,4 @@ abstract class Complex
     {
         return $this->imaginaryMagnitude;
     }
-
-    /**
-     * Возвращает представление числа в виде строки
-     * @return string
-     */
-    abstract public function toString():string;
 }

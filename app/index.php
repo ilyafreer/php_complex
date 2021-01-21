@@ -2,68 +2,82 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use code\ComplexMath;
-use code\ComplexAlgebraic;
-use code\ComplexTrigonometry;
+
+define('FORMATS',[
+    'algebraic',
+    'trigonometry'
+]);
+
+if(!$_GET['format'] || !in_array($_GET['format'],FORMATS)){
+    die('Укажите в запросе format вывода ответа algebraic или trigonometry');
+}
+
+$className = 'code\Complex'.ucfirst($_GET['format']);
+
+$complexA = new $className(5, 2.3);
+$complexB = new $className(3, -3);
 
 $results = [];
 
-$complexAlgebraicOne = new ComplexAlgebraic(5, 2.3);
-$complexAlgebraicTwo = new ComplexAlgebraic(3, -3);
-
-$results['algebraic']['sum'] =
-    '(' . $complexAlgebraicOne->toString() . ') + (' . $complexAlgebraicTwo->toString() . ') = ' . ComplexMath::sum(
-        $complexAlgebraicOne,
-        $complexAlgebraicTwo
+$results[$_GET['format']]['sum'] =
+    '(' . $complexA->toString() . ') + (' . $complexB->toString() . ') = ' . ComplexMath::sum(
+        $complexA,
+        $complexB
     )->toString();
 
-$results['algebraic']['subtract'] =
-    '(' . $complexAlgebraicOne->toString() . ') - (' . $complexAlgebraicTwo->toString() . ') = ' . ComplexMath::subtract(
-        $complexAlgebraicOne,
-        $complexAlgebraicTwo
+$results[$_GET['format']]['subtract'] =
+    '(' . $complexA->toString() . ') - (' . $complexB->toString() . ') = ' . ComplexMath::subtract(
+        $complexA,
+        $complexB
     )->toString();
 
-$results['algebraic']['multiply'] =
-    '(' . $complexAlgebraicOne->toString() . ') * (' . $complexAlgebraicTwo->toString() . ') = ' . ComplexMath::multiply(
-        $complexAlgebraicOne,
-        $complexAlgebraicTwo
+$results[$_GET['format']]['multiply'] =
+    '(' . $complexA->toString() . ') * (' . $complexB->toString() . ') = ' . ComplexMath::multiply(
+        $complexA,
+        $complexB
     )->toString();
 
 try {
-    $results['algebraic']['divide'] =
-        '(' . $complexAlgebraicOne->toString() . ') / (' . $complexAlgebraicTwo->toString() . ') = ' . ComplexMath::divide(
-            $complexAlgebraicOne,
-            $complexAlgebraicTwo
+    $results[$_GET['format']]['divide'] =
+        '(' . $complexA->toString() . ') / (' . $complexB->toString() . ') = ' . ComplexMath::divide(
+            $complexA,
+            $complexB
         )->toString();
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
 
-$complexTrigonometryOne = new ComplexTrigonometry(1, -1);
-$complexTrigonometryTwo = new ComplexTrigonometry(2, 3.5);
 
-$results['trigonometry']['sum'] =
-    $complexTrigonometryOne->toString() . ' + ' . $complexTrigonometryTwo->toString() . ' = ' . ComplexMath::sum(
-        $complexTrigonometryOne,
-        $complexTrigonometryTwo
+// Вариант с использованием абстрактной фабрики
+$className .= 'Factory';
+$complexFactory = new $className();
+
+$complexA = $complexFactory->createComplex(5, 2.3);
+$complexB = $complexFactory->createComplex(3, -3);
+
+$results[$_GET['format'].' Factory']['sum'] =
+    '(' . $complexA->toString() . ') + (' . $complexB->toString() . ') = ' . ComplexMath::sum(
+        $complexA,
+        $complexB
     )->toString();
 
-$results['trigonometry']['subtract'] =
-    $complexTrigonometryOne->toString() . ' - ' . $complexTrigonometryTwo->toString() . ' = ' . ComplexMath::subtract(
-        $complexTrigonometryOne,
-        $complexTrigonometryTwo
+$results[$_GET['format'].' Factory']['subtract'] =
+    '(' . $complexA->toString() . ') - (' . $complexB->toString() . ') = ' . ComplexMath::subtract(
+        $complexA,
+        $complexB
     )->toString();
 
-$results['trigonometry']['multiply'] =
-    $complexTrigonometryOne->toString() . ' * ' . $complexTrigonometryTwo->toString() . ' = ' . ComplexMath::multiply(
-        $complexTrigonometryOne,
-        $complexTrigonometryTwo
+$results[$_GET['format'].' Factory']['multiply'] =
+    '(' . $complexA->toString() . ') * (' . $complexB->toString() . ') = ' . ComplexMath::multiply(
+        $complexA,
+        $complexB
     )->toString();
 
 try {
-    $results['trigonometry']['divide'] =
-        $complexTrigonometryOne->toString() . ' / ' . $complexTrigonometryTwo->toString() . ' = ' . ComplexMath::divide(
-            $complexTrigonometryOne,
-            $complexTrigonometryTwo
+    $results[$_GET['format'].' Factory']['divide'] =
+        '(' . $complexA->toString() . ') / (' . $complexB->toString() . ') = ' . ComplexMath::divide(
+            $complexA,
+            $complexB
         )->toString();
 } catch (Exception $exception) {
     echo $exception->getMessage();
