@@ -17,7 +17,11 @@ docker exec -it complex_app bash
 composer update
 php vendor/bin/codecept run unit ComplexTest
 ```
-Просмотр в браузере по адресу localhost:8080
+Просмотр в браузере по адресу localhost:8080 и передать параметр отображения format со значением trigonometry или algebraic
+
+Вывод будет содержать два списка решений.
+Первый с построением через фабричный метод, второй через абстрактную фабрику
+
 
 ![Пример вывода в браузере](/app/screens/result.png)
 ![Пример работы тестов](/app/screens/tests.png)
